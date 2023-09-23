@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>К-Планирование</title>
+    {% load static %}
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+<body class="main">
+    <div>
+        <div class="fs-5">Нужно сделать</div>
+            {% for task in tasks %}
+                {% if task.status == 'Нужно сделать' %}
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <p class="card-text"> {{ task.desc_text }} </p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Участник:</b> {{ task.person }}</li>
+                            <li class="list-group-item"><b>Создано:</b> {{ task.created_at }}</li>
+                            <li class="list-group-item"><b>Сделать до:</b> {{ task.due_dt }}</li>
+                            <li class="list-group-item"><b>Статус:</b> {{ task.status }}</li>
+                            <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                                <button type="button" class="btn btn-primary">
+                                    Изменить
+                                </button>
+                            </a>
+                          </ul>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <div class="fs-5">В работе у меня</div>
+            {% for task in tasks %}
+                {% if task.status == 'Нужно сделать' %}
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <p class="card-text"> {{ task.desc_text }} </p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Участник:</b> {{ task.person }}</li>
+                            <li class="list-group-item"><b>Создано:</b> {{ task.created_at }}</li>
+                            <li class="list-group-item"><b>Сделать до:</b> {{ task.due_dt }}</li>
+                            <li class="list-group-item"><b>Статус:</b> {{ task.status }}</li>
+                          </ul>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            Создать
+        </button>
+    <form>
+</body>
+</html>

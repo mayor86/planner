@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import tasks_index
+from .views import TaskUpdateView, TaskIndexView
 
 app_name = 'tasks'
 
 urlpatterns = [
-    path('', tasks_index, name='index'),
+    path('', TaskIndexView.as_view(), name='index'),
+    path('update/<int:pk>', TaskUpdateView.as_view(), name='task_update'),
 ]
