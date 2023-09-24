@@ -4,60 +4,156 @@
     <meta charset="UTF-8">
     <title>К-Планирование</title>
     {% load static %}
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!--  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
     <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </head>
 <body class="main">
-    <div>
-        <div class="fs-5">Нужно сделать</div>
+    <div class="section verticalLine">
+        <strong> Нужно сделать </strong>
             {% for task in tasks %}
                 {% if task.status == 'Нужно сделать' %}
-                    <div class="card" style="width: 18rem;">
-                      <div class="card-body">
-                        <p class="card-text"> {{ task.desc_text }} </p>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>Участник:</b> {{ task.person }}</li>
-                            <li class="list-group-item"><b>Создано:</b> {{ task.created_at }}</li>
-                            <li class="list-group-item"><b>Сделать до:</b> {{ task.due_dt }}</li>
-                            <li class="list-group-item"><b>Статус:</b> {{ task.status }}</li>
-                            <a href="{% url 'tasks:task_update' pk=task.pk %}">
-                                <button type="button" class="btn btn-primary">
-                                    Изменить
-                                </button>
-                            </a>
-                          </ul>
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
                       </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-    <div>
-        <div class="fs-5">В работе у меня</div>
+    
+    <div class="section verticalLine">
+        <strong> Запланировано </strong>
             {% for task in tasks %}
-                {% if task.status == 'Нужно сделать' %}
-                    <div class="card" style="width: 18rem;">
-                      <div class="card-body">
-                        <p class="card-text"> {{ task.desc_text }} </p>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>Участник:</b> {{ task.person }}</li>
-                            <li class="list-group-item"><b>Создано:</b> {{ task.created_at }}</li>
-                            <li class="list-group-item"><b>Сделать до:</b> {{ task.due_dt }}</li>
-                            <li class="list-group-item"><b>Статус:</b> {{ task.status }}</li>
-                          </ul>
+                {% if task.status == 'Запланировано' %}
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
                       </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-    <form method="post">
+    
+    <div class="section verticalLine">
+        <strong> В работе у меня </strong>
+            {% for task in tasks %}
+                {% if task.status == 'В работе у меня' %}
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="section verticalLine">
+        <strong> В работе не у меня </strong>
+            {% for task in tasks %}
+                {% if task.status == 'В работе не у меня' %}
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="section verticalLine">
+        <strong> Сегодня </strong>
+            {% for task in tasks %}
+                {% if task.status == 'Сегодня' %}
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="section verticalLine">
+        <strong> Выполнено </strong>
+            {% for task in tasks %}
+                {% if task.status == 'Выполнено' %}
+                    <div class="card">
+                      <div>
+                        <textarea rows="5" readonly> {{ task.desc_text }} </textarea>
+                        <div><b>Участник:</b> {{ task.person }}</div>
+                        <div><b>Создано:</b> {{ task.created_at|date:'d.m.Y' }}</div>
+                        <div><b>Сделать до:</b> {{ task.due_dt|date:'d.m.Y' }}</div>
+                        <div><b>Статус:</b> {{ task.status }}</div>
+                        <a href="{% url 'tasks:task_update' pk=task.pk %}">
+                            <button type="button">
+                                Изменить
+                            </button>
+                        </a>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <form class="form verticalLine" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">
             Создать
         </button>
+        
     <form>
 </body>
 </html>

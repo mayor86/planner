@@ -1,4 +1,30 @@
 .main {
-  background-color: lightgrey;
-  display: flex;
+    display: flex;
+    flex-direction: row;
+}
+
+.section {
+    min-width: 200px;
+    margin: 1px;
+    text-align: center;
+}
+
+.card {
+    margin: 1px;
+    background: lightgrey;
+    min-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    text-align: left;
+}
+
+.verticalLine {
+  border-left: 1px solid lightgrey;
+}
+
+.form {
+    border-radius: 5px;
+    background: lightblue;
+    margin: 0 0 0 10px;
+    height: 420px;
 }
