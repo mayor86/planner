@@ -10,21 +10,30 @@
 }
 
 .card {
-    margin: 1px;
-    background: lightgrey;
+    margin: 1px 1px 5px 1px;
+    padding: 1px;
     min-width: 200px;
     min-height: 200px;
-    max-height: 200px;
     text-align: left;
+    font-size: 0.8rem;
+    border-width: 1px;
 }
 
-.verticalLine {
-  border-left: 1px solid lightgrey;
+.verticalLine1 {
+    border-left: 1px solid lightgrey;
 }
 
 .form {
     border-radius: 5px;
     background: lightblue;
     margin: 0 0 0 10px;
-    height: 420px;
+    height: 570px;
+}
+
+.form-control{
+    font-size: 0.8rem;
+}
+
+.btn {
+    font-size: 0.8rem;
 }
